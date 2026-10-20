@@ -157,7 +157,8 @@ export function ReceiptCard({ booking }: { booking: BookingRecord }) {
           onOpenChange={setPreviewing}
           title={t.invoices.kinds[invoice.kind].title}
           footer={
-            <div className="flex flex-col gap-2 sm:flex-row">
+            // Equal columns from `sm`: buttons don't shrink, so two full-width ones in a flex row overflow.
+            <div className="grid gap-2 sm:auto-cols-fr sm:grid-flow-col">
               {!cancelled && <SendReceiptButton invoice={invoice} fullWidth />}
               <DownloadPdfButton document={invoice} cancelled={cancelled} fullWidth />
             </div>
